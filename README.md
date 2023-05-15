@@ -27,3 +27,6 @@ services:
 volumes:
   food_data:
 ```
+```bash
+docker-compose up -d
+```
