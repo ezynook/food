@@ -3,12 +3,27 @@
 * PHP, MySQL
 #### How to Deploy
 ```bash
-docker volume create food_data
+vim docker-compose.yml
 ```
-```bash
-docker run --name food \
--p 80:80 -p 3306:3306 \
---restart=always \
--v food_data:/var/lib/mysql \
--d ghcr.io/ezynook/food/food:latest
+```yaml
+version: '3'
+services:
+  food:
+    image: ghcr.io/ezynook/food/food:latest
+    container_name: food
+    ports:
+      - 80:80
+      - 3306:3306
+    restart: always
+    volumes:
+      - food_data:/var/lib/mysql
+    healthcheck:
+      test: curl --fail http://localhost || exit 1
+      interval: 1m30s
+      timeout: 30s
+      retries: 3
+      start_period: 30s
+
+volumes:
+  food_data:
 ```
