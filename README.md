@@ -1,7 +1,7 @@
 ### 🍲 Food Management System
-#### Develope Tools
+#### 🟢 Develope Tools
 * PHP, MySQL
-#### How to Deploy
+#### 🟢 How to Deploy
 ```bash
 vim docker-compose.yml
 ```
